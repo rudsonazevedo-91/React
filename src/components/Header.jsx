@@ -1,5 +1,20 @@
-export function Header() {
-    return(
-        <h1>Funcionando</h1>
-    )
+import { Link } from 'react-router-dom';
+import style from './Header.module.css';
+
+export function Header({ brand, description, children }) {
+    return (
+        <header className={style.header}>
+            <Link className={style.brand} to="/">
+                <span className={style.logo}>GT</span>
+                <div className={style.brand__info}>
+                    <strong>{brand}</strong>
+                    <span>{description}</span>
+                </div>
+            </Link>
+
+            <nav className={style.navigation}>
+                {children}
+            </nav>
+        </header>
+    );
 }

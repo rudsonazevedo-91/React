@@ -1,15 +1,30 @@
-import './App.css'
-import Greetings from './components/Greetings'
-import { Header } from './components/Header'
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import './App.css';
 
 function App() {
   return (
-    <>
-      <Header/>
-      <Greetings/>
-      <h1>Funcionando</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Header
+        brand="Geração Tech"
+        description="Sede Bezerra"
+      >
+        <a href="/#equipe">Equipe</a>
+        <NavLink to="/contato">Contato</NavLink>
+
+      </Header>
+
+      <main className="Container">
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path='#' element={<Home/>}/>
+          <Route path="/contato" element={<Contact/>}/>
+        </Routes>
+      </main>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
